@@ -1,0 +1,10 @@
+﻿@model string
+<h4>Create a role</h4>
+<div asp-validation-summary="All"></div>
+<form asp-action="Create">
+    <div class="form-group">
+        <label for="name">Name</label>
+    <input type="text" name="name" class="form-control" /> 
+    </div>
+    <input class="btn btn-success m-2" type="submit" value="Create" />
+</form>

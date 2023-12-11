@@ -1,0 +1,22 @@
+﻿@using ASP.NETSchool.ViewModels
+@model LoginViewModel
+
+<h4>Login</h4>
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-action="Login">
+    <input type="hidden" asp-formaction="ReturnUrl" disabled />
+    <div class="form-group">
+        <label asp-for="Username"></label>
+        <input type="text" asp-for="Username" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input type="password" asp-for="Password" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Remember">Remember?</label>
+        <input type="checkbox" asp-for="Remember" />
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Log in</button>
+</form>
+<p>Login for Student role: "Radek", pass: "Abcd1234." </p>

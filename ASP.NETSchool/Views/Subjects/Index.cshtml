@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Subject>
+<h3>List of subjects</h3>
+@if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+{
+    <a class="btn btn-success mb-2" asp-action="Create">Create new</a>
+}
+@foreach (var subject in Model)
+{
+    <div class="border border-1 border-dark p-2 rounded mb-2">
+        <h5>@subject.Name</h5>
+        @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+        {
+            <p>Id:@subject.Id</p>
+            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@subject.Id">Edit</a>
+            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@subject.Id">Delete</a>
+        }
+    </div>
+}

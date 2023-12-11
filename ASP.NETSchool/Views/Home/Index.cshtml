@@ -1,0 +1,12 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Home Page"; // html title
+}
+
+<h1>Welcome!</h1>
+<div>
+    @Model
+</div>
+
+<a class="btn btn-info" asp-controller="Account" asp-action="Logout">Log out</a>
+<p>Pro vyzkoušení rolí jsou k dispozici účty Radek (student), Matikar (teacher), Tata (Parent) a Kapitan (Admin). Heslo je u každého účtu "Abcd1234" bez uvozovek a za poslední číslicí je tečka.</p>

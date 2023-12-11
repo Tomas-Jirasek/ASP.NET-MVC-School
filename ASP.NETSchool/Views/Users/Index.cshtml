@@ -1,0 +1,21 @@
+﻿@model IEnumerable<AppUser>
+<h3>All users</h3>
+<a class="btn btn-success mb-2" asp-action="Create">Create a new user</a>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>User name</th>
+        <th>Email</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    @foreach(var user in Model){
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td><a class="btn btn-warning" asp-action="Edit" asp-route-id="@user.Id">Edit</a></td>
+            <td><a class="btn btn-danger" asp-action="Delete" asp-route-id="@user.Id">Delete</a></td> @*melo by se mazat formem pres post, jako v Roles View*@
+        </tr>
+    }
+</table>

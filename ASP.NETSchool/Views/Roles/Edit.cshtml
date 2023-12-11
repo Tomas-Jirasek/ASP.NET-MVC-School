@@ -1,0 +1,54 @@
+﻿@using ASP.NETSchool.ViewModels
+@model RoleEditViewModel
+<h3>Edit Role Members</h3>
+<div asp-validation-summary="All" class="text-danger"></div>
+<a class="btn btn-secondary" asp-action="Index">Back to role list</a>
+<form method="post">
+    <input type="hidden" value="@Model.Role.Name" name="RoleName" />  @*name musi byt stejny jako nazev promenne v roleeditviewmodelu. value je RoleEditViewModel, name je RoleModificationViewModel. Přes @model se dostavaji data dovnitr, pres parametr name="RoleName" se dostavaji data ven, i kdyz nezapadaji do @modelu*@
+    <input type="hidden" value="@Model.Role.Id" name="RoleId" /> @*name musi byt stejny jako nazev promenne v roleeditviewmodelu*@
+    <h5>Add to @Model.Role.Name</h5>
+    <table class="table table-bordered">
+        @if(Model.NonMembers.Count() == 0)
+        {
+            <tr>
+                <td class="text-secondary">
+                    All users have this role
+                </td>
+            </tr>
+        }
+        @foreach(var nonMember in Model.NonMembers){
+        <tr>
+            <td>
+                @nonMember.UserName
+            </td>
+            <td>
+                <input type="checkbox" name="IdsToAdd" value="@nonMember.Id" /> @*name musi byt stejny jako nazev promenne v roleeditviewmodelu (public string[] IdsToDelete)*@
+            </td>
+        </tr>
+    }
+    </table>
+    
+    <h5>Remove from @Model.Role.Name</h5>
+    <table class="table table-bordered">
+        @if (Model.Members.Count() == 0)
+        {
+            <tr>
+                <td class="text-secondary">
+                    Nobody has this role
+                </td>
+            </tr>
+        }
+        @foreach (var member in Model.Members)
+        {
+            <tr>
+                <td>
+                    @member.UserName
+                </td>
+                <td>
+                    <input type="checkbox" name="IdsToDelete" value="@member.Id" />
+                </td>
+            </tr>
+        }
+    </table>
+    <button type="submit" class="btn btn-success">Save changes</button>
+</form>

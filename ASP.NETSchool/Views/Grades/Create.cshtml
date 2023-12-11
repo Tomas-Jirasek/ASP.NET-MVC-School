@@ -1,0 +1,22 @@
+﻿@using ASP.NETSchool.ViewModels;
+@model GradeViewModel
+<form asp-action="Create">
+    <div>
+        <label asp-for="StudentId"></label>
+        <select class="form-control" asp-items="ViewBag.Students" asp-for="StudentId"></select>
+    </div>
+    <div>
+        <label asp-for="SubjectId"></label>
+        <select class="form-control" asp-items="ViewBag.Subjects" asp-for="SubjectId"></select>
+    </div>
+    <div>
+        <label asp-for="Topic"></label>
+        <input type="text" placeholder="Topic that was graded" class="form-control" asp-for="Topic" />
+        @*<span asp-validation-for="Topic"></span>*@
+    </div>
+    <div>
+        <label asp-for="Mark"></label>
+        <input type="number" placeholder="Grade" max="5" min="1" class="form-control" asp-for="Mark" />
+    </div>
+    <input class="btn btn-success m-2" type="submit" value="Create" />
+</form>
